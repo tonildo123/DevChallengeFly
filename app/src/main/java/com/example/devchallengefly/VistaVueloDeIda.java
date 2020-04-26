@@ -127,10 +127,11 @@ public class VistaVueloDeIda extends Fragment {
 
     public void LlamarAconfirmarCompra(String people) {
         String origen = origin.getText().toString().trim();
-        String  destino = destinnity.getText().toString().trim();
+        String destino = destinnity.getText().toString().trim();
         String fecha = date.getText().toString().trim();
         String disponible = availability.getText().toString().trim();
         String precio= price.getText().toString().trim();
+        Double resultado = Integer.parseInt(people)*Double.parseDouble(precio);
 
         if (origen.equals(null)){
             AlertDialog.Builder builder =
@@ -158,7 +159,7 @@ public class VistaVueloDeIda extends Fragment {
                              + "\nDiSPONIBLES        : "+disponible
                              + "\nPERSONAS QUE VIAJAN: "+people
                              + "\nPRECIO X PERSONA $ : "+precio
-                             + "\nTOTAL EN PASAJE/S $: "+Integer.parseInt(precio)*Double.parseDouble(people)
+                             + "\nTOTAL EN PASAJE/S $: "+resultado
                              + "\nFECHA              : "+fecha)
                     .setTitle("CONFIRMAR COMPRA")
                     .setPositiveButton("ACEPTAR", new DialogInterface.OnClickListener()  {
