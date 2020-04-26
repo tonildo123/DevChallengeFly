@@ -67,14 +67,14 @@ public class FormatoDataSet {
         this.fecha = fecha;
     }
 
-    @Override
+  /*  @Override
     public String toString() {
         return  " ORIGEN"+"          " + origin +"      "+ "\n" +
                 " DESTINO"+"         " + destination+"  "+ "\n" +
                 " PRECIO"+"          " + price+"        "+ "\n" +
                 " DISPONIBILIDAD"+"  " + availability +""+ "\n" +
                 " FECHA"+"           " + fecha+"        "+ "\n" ;
-    }
+    }*/
 
 
 }

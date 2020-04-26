@@ -1,8 +1,11 @@
 package com.example.devchallengefly;
 
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 
+import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -40,18 +43,29 @@ public class VistaVueloDeIda extends Fragment {
 
 
     private ListView lista;
-    private List<FormatoDataSet> lista_data_set= new ArrayList<FormatoDataSet>();
+   // private List<FormatoDataSet> lista_data_set= new ArrayList<FormatoDataSet>();
+   ArrayList<FormatoDataSet> lista_data_set = new ArrayList();
     private List<ModeloRepo> lista_de_rechazados= new ArrayList<ModeloRepo>();
+   //ArrayList<FormatoDataSet> lista_data_set = new ArrayList();
+
+
     ArrayAdapter<FormatoDataSet> arrayAdapterDataSet;
 
     FormatoDataSet formato_seleccionado;
 
-   // ArrayList<HashMap<String, String>> filtrar_viajes;
-    private ProgressDialog  progressDialog;
 
 
     private TextView origin, destinnity, availability, price, date;
     private Button buy;
+
+
+    String city_origin=null;
+    String city_destination=null;
+    String people=null;
+
+
+    AdaptadorFly clase_adapatador_pasajes;
+
 
 
     @Override
@@ -67,7 +81,22 @@ public class VistaVueloDeIda extends Fragment {
         date = vista_ida.findViewById(R.id.txtDate2);
         buy = vista_ida.findViewById(R.id.button_buy_ticket);
 
-        lista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+        Bundle data = this.getArguments();
+        if(data != null) {
+
+            city_origin = data.getString("ciudad_de_origen");
+            city_destination = data.getString("ciudad_de_destino");
+            people = data.getString("personas");
+            Toast.makeText(getContext(), "se recibio datos!" + city_origin + "\n" +
+                    city_destination + "\n" + people, Toast.LENGTH_SHORT).show();
+            ObetenerLista(city_origin, city_destination, people);
+
+        }
+
+
+
+            lista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 formato_seleccionado = (FormatoDataSet) parent.getItemAtPosition(position);
@@ -80,28 +109,99 @@ public class VistaVueloDeIda extends Fragment {
             }
         });
 
-        progressDialog = new ProgressDialog(getContext());
-        ObetenerLista();
+
+
+
+        buy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                LlamarAconfirmarCompra(people);
+
+            }
+        });
+
 
 
         return vista_ida;
     }
 
-    private void ObetenerLista() {
+    public void LlamarAconfirmarCompra(String people) {
+        String origen = origin.getText().toString().trim();
+        String  destino = destinnity.getText().toString().trim();
+        String fecha = date.getText().toString().trim();
+        String disponible = availability.getText().toString().trim();
+        String precio= price.getText().toString().trim();
 
-        String city_origin=null;
-        String city_destination=null;
-        String people=null;
+        if (origen.equals(null)){
+            AlertDialog.Builder builder =
+                    new AlertDialog.Builder(getActivity());
 
-        Bundle data = this.getArguments();
-            if(data != null) {
-                progressDialog.setMessage("Realizando busqueda en linea...");
-                progressDialog.show();
-                city_origin = data.getString("ciudad_de_origen");
-                city_destination = data.getString("ciudad_de_destino");
-                people = data.getString("personas");
-                Toast.makeText(getContext(), "se recibio datos!" + city_origin + "\n" +
-                        city_destination + "\n" + people, Toast.LENGTH_SHORT).show();
+            builder  .setTitle("DEBE SELECCIONAR UNA RESERVA")
+                    .setPositiveButton("Aceptar", new DialogInterface.OnClickListener()  {
+                        public void onClick(DialogInterface dialog, int id) {
+                         dialog.dismiss();
+
+                        }
+                    });
+            AlertDialog dialog = builder.create();
+            dialog.show();
+
+
+            } else {
+
+
+            AlertDialog.Builder builder =
+                    new AlertDialog.Builder(getActivity());
+
+            builder.setMessage("\nORIGEN             : "+origen
+                             + "\nDESTINO            : "+destino
+                             + "\nDiSPONIBLES        : "+disponible
+                             + "\nPERSONAS QUE VIAJAN: "+people
+                             + "\nPRECIO X PERSONA $ : "+precio
+                             + "\nTOTAL EN PASAJE/S $: "+Integer.parseInt(precio)*Double.parseDouble(people)
+                             + "\nFECHA              : "+fecha)
+                    .setTitle("CONFIRMAR COMPRA")
+                    .setPositiveButton("ACEPTAR", new DialogInterface.OnClickListener()  {
+                        public void onClick(DialogInterface dialog, int id) {
+                            dialog.dismiss();
+                            OtroMensaje();
+                        }
+                    })
+                    .setNegativeButton("CANCELAR", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            Log.i("Dialogos", "Confirmacion Cancelada.");
+                            dialog.dismiss();
+                        }
+                    });
+            AlertDialog dialog = builder.create();
+            dialog.show();
+        }
+
+
+    }
+
+    private void OtroMensaje() {
+
+        AlertDialog.Builder builder =
+                new AlertDialog.Builder(getActivity());
+
+        builder .setTitle("GRACIAS POR SU COMPRA!")
+                .setPositiveButton("SALIR", new DialogInterface.OnClickListener()  {
+                    public void onClick(DialogInterface dialog, int id) {
+
+                        dialog.dismiss();
+                        getActivity().getSupportFragmentManager()
+                                .beginTransaction()
+                                .replace(R.id.contenedor_principal, new VistaInicial()).commit();
+                    }
+                });
+        AlertDialog dialog = builder.create();
+        dialog.show();
+
+    }
+
+    private void ObetenerLista( String city_origin,String city_destination,String people) {
+
 
 
             String json = null;
@@ -147,12 +247,14 @@ public class VistaVueloDeIda extends Fragment {
                         lista_de_rechazados.add(repo);
                         }
 
-                    arrayAdapterDataSet = new ArrayAdapter<FormatoDataSet>(getContext(),
-                            android.R.layout.simple_list_item_1, lista_data_set);
-                    lista.setAdapter(arrayAdapterDataSet);
+                    clase_adapatador_pasajes = new AdaptadorFly(getContext(), lista_data_set);
+                    lista.setAdapter(clase_adapatador_pasajes);
+                   // arrayAdapterDataSet = new ArrayAdapter<FormatoDataSet>(getContext(),
+                    //        android.R.layout.simple_list_item_1, lista_data_set);
+                    //lista.setAdapter(arrayAdapterDataSet);
                 }
 
-                progressDialog.dismiss();
+
                 Toast.makeText(getActivity(), "Listado Actualizado" + "\nout", Toast.LENGTH_LONG).show();
 
 
@@ -170,7 +272,7 @@ public class VistaVueloDeIda extends Fragment {
                         "No se pudo Actualizar" + e, Toast.LENGTH_LONG).show();
             }
 
-            }
+
 
     }
 
@@ -178,78 +280,3 @@ public class VistaVueloDeIda extends Fragment {
 
 }
 
-////// codigo para obtener json local
-/*
-*  String json = null;
-        try {
-            InputStream is = getActivity().getAssets().open("dataset.json");
-            int size = is.available();
-            byte[] buffer = new byte[size];
-            is.read(buffer);
-            is.close();
-            json = new String(buffer, "UTF-8");
-            JSONArray archivo_json_array = new JSONArray(json);
-
-            for (int i =0 ; i< archivo_json_array.length();i++){
-
-                JSONObject objetos_del_array = archivo_json_array.getJSONObject(i);
-
-
-                String origen      = objetos_del_array.getString("origin");
-                String destino     = objetos_del_array.getString("destination");
-                String fecha       = objetos_del_array.getString("data") ;
-                Double precio      = objetos_del_array.getDouble("price") ;
-                int disponibilidad = objetos_del_array.getInt("availability");
-
-
-                    FormatoDataSet data_set = new FormatoDataSet();
-                    data_set.setOrigin(city_origin);
-                    data_set.setDestination(city_destination);
-                    data_set.setFecha(fecha);
-                    data_set.setPrice(precio);
-                    data_set.setAvailability(disponibilidad);
-                    lista_data_set.add(data_set);
-                    arrayAdapterDataSet = new ArrayAdapter<FormatoDataSet>(getContext(),
-                            android.R.layout.simple_list_item_1, lista_data_set);
-                    lista.setAdapter(arrayAdapterDataSet);
-
-
-            }
-            Toast.makeText(getActivity(),"Listado Actualizado", Toast.LENGTH_LONG).show();
-        } catch (IOException ex) {
-            Log.v("MainActivity", "Error: " + ex.getMessage());
-            ex.printStackTrace();
-            Toast.makeText(getActivity(),
-                    "No se pudo Actualizar" + ex, Toast.LENGTH_LONG).show();
-
-        } catch (JSONException e) {
-
-            Log.v("MainActivity", "Error: " + e.getMessage());
-            e.printStackTrace();
-            Toast.makeText(getActivity(),
-                    "No se pudo Actualizar" + e, Toast.LENGTH_LONG).show();
-        }
-    }*/
-
-/////////////////// para hashmap
-
-
-/*     HashMap<String, String> ofertas = new HashMap<>();
-
-                    // adding each child node to HashMap key => value
-                    ofertas.put("origin", city_origin);
-                    ofertas.put("destination", city_destination);
-                    ofertas.put("data", fecha);
-                    ofertas.put("price", String.valueOf(precio));
-                    ofertas.put("availability", String.valueOf(disponibilidad));
-                    // adding ofertas to ofertas list
-                    filtrar_viajes.add(ofertas);
-
-
-                ListAdapter adapter = new SimpleAdapter(
-                        getActivity(), filtrar_viajes,
-                        R.layout.list_item, new String[]{"origin", "destination",
-                        "data", "price", "availability"}, new int[]{R.id.tetv_origen,
-                        R.id.txtv_destino, R.id.txtv_fecha, R.id.txtv_precio, R.id.txtv_disponibilidad});
-
-                lista.setAdapter(adapter);*/
