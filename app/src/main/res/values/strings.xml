@@ -1,0 +1,68 @@
+<resources>
+    <string name="app_name">        DevChallengeFly</string>
+    <string name="bienvenido">Bienvenido a la LIBERTAD DE VOLAR!</string>
+    <string name="cantidad_de_personas">¿Cuantas personas viajan? EJEMPLO : 5</string>
+    <string name="cantidad_de_dinero">¿Cuanto dinero desea gastar? EJEMPLO : $ 800 </string>
+    <string name="fecha_ida">¿Cuando desea viajar ? </string>
+    <string name="fecha_vuelta">¿Cuando desea regresar ? </string>
+    <string name="desde_donde_viaja">¿ DESDE DONDE VIAJA ? </string>
+    <string name="cual_es_su_destino">¿ CUAL ES SU DESTINO ? </string>
+    <string name="destino_recomendado">DESTINOS RECOMENDADOS</string>
+    <string name="toque_aqui">TOQUE AQUI</string>
+    <string name="seleccione_aqui">SELECCIONE EL MAS CONVENIENTE</string>
+    <string name="txtgo">ORIGEN</string>
+    <string name="txtback">DESTINO</string>
+    <string name="txtdate">FECHA</string>
+    <string name="txtprice">PRECIO</string>
+    <string name="txt_nothing"></string>
+    <string name="seleccione_buscar">Buscar</string>
+    <string name="txtavailability">DISPONIBILIDAD</string>
+    <string name="button_comprar">COMPRAR PASAJE</string>
+
+
+
+    <string-array name="spinnerOrigen">
+        <item>ORIGEN  </item>
+        <item>BUENOS AIRES</item>
+        <item>MENDOZA</item>
+        <item>CORDOBA</item>
+        <item>BARILOCHE</item>
+
+    </string-array>
+
+    <string-array name="spinnerDestinoSinEPA">
+        <item>DESTINO  </item>
+        <!--item>BUENOS AIRES</item>-->
+        <item>MENDOZA</item>
+        <item>CORDOBA</item>
+        <item>BARILOCHE</item>
+    </string-array>
+
+    <string-array name="spinnerDestinoSinCOR">
+        <item>DESTINO  </item>
+        <item>BUENOS AIRES</item>
+        <item>MENDOZA</item>
+        <!--<item>CORDOBA</item> -->
+        <item>BARILOCHE</item>
+    </string-array>
+    <string-array name="spinnerDestinoSinMDZ">
+        <item>DESTINO  </item>
+        <item>BUENOS AIRES</item>
+        <!--<item>MENDOZA</item>-->
+        <item>CORDOBA</item>
+        <item>BARILOCHE</item>
+    </string-array>
+    <string-array name="spinnerDestinoSinBRC">
+        <item>DESTINO  </item>
+        <item>BUENOS AIRES</item>
+        <item>MENDOZA</item>
+        <item>CORDOBA</item>
+        <!--<item>BARILOCHE</item>-->
+    </string-array>
+
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+</resources>

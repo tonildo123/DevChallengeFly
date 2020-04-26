@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/tetv_origen"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="2dip"
+        android:paddingTop="6dip"
+        android:textColor="#3498db"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/txtv_destino"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="2dip"
+        android:textColor="#16a085"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/txtv_fecha"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#e74c3c"
+        android:textStyle="bold" />
+    <TextView
+        android:id="@+id/txtv_precio"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="2dip"
+        android:textColor="#16a085"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/txtv_disponibilidad"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#e74c3c"
+        android:textStyle="bold" />
+</LinearLayout>

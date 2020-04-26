@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".VistaVueloDeIda">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="0.75"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.5"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/txtGo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/txtgo"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/txtBack"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/txtback"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/txtAvailability"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/txtavailability"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/txtPrice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/txtprice"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/txtDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/txtdate"
+                android:textSize="18sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.5"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/txtGo2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/txt_nothing"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/txtBack2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/txt_nothing"
+
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/txtAvailability2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/txt_nothing"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/txtPrice2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/txt_nothing"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/txtDate2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/txt_nothing"
+                android:textSize="18sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="0.25"
+        android:orientation="vertical">
+
+
+        <Button
+            android:id="@+id/button_buy_ticket"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/button_comprar" />
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#FCED9D"
+            android:gravity="center_horizontal"
+            android:text="@string/seleccione_aqui"
+            android:textColor="#160404"
+            android:textSize="20sp" />
+
+        <ListView
+            android:id="@+id/lista_modelo"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
+</LinearLayout>

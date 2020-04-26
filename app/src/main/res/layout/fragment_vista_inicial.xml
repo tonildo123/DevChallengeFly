@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".VistaInicial">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="0.5"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.90"
+            android:background="@android:color/holo_orange_light"
+            android:gravity="center_horizontal|center_vertical"
+            android:text="@string/bienvenido"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp" />
+
+        <LinearLayout
+            android:id="@+id/layout_origen"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.90"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/texto_origen"
+                android:layout_width="258dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.25"
+                android:gravity="center_vertical"
+                android:text="@string/desde_donde_viaja" />
+
+            <Spinner
+                android:id="@+id/spinner_origen"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="0.75" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layout_destino"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.90"
+            android:background="#FCED9D"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/texto_destino"
+                android:layout_width="258dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.25"
+                android:gravity="center_vertical"
+                android:text="@string/destino_recomendado" />
+
+            <Spinner
+                android:id="@+id/spinner_destino"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="0.75" />
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/texto_cant_personas"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.90"
+            android:ems="10"
+            android:hint="@string/cantidad_de_personas"
+            android:inputType="number" />
+
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.90"
+            android:background="@android:color/holo_orange_light"
+            android:text="@string/seleccione_buscar"
+            android:textColor="#FFFFFF"
+            android:textSize="24sp" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="0.50"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/rocket_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal|center_vertical"
+            android:scaleType="centerInside"
+            android:contentDescription="@string/fecha_ida" />
+    </LinearLayout>
+
+</LinearLayout>
+
+
+    <!--      <LinearLayout
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:orientation="horizontal">
+
+                 <LinearLayout
+                     android:layout_width="match_parent"
+                     android:layout_height="match_parent"
+                     android:layout_weight="0.5"
+                     android:orientation="vertical">
+
+                     <TextView
+                         android:id="@+id/textView2"
+                         android:layout_width="match_parent"
+                         android:layout_height="wrap_content"
+                         android:gravity="center_horizontal|center_vertical"
+                         android:text="@string/fecha_ida" />
+
+                     <EditText
+                         android:id="@+id/fecha_ida"
+                         android:layout_width="match_parent"
+                         android:layout_height="wrap_content"
+                         android:clickable="true"
+                         android:ems="10"
+                         android:focusable="false"
+                         android:gravity="center_horizontal"
+                         android:hint="@string/toque_aqui"
+                         android:inputType="date"
+                         android:maxLines="1" />
+                 </LinearLayout>
+
+                 <LinearLayout
+                     android:layout_width="match_parent"
+                     android:layout_height="match_parent"
+                     android:layout_weight="0.5"
+                     android:orientation="vertical">
+
+                     <TextView
+                         android:id="@+id/textView3"
+                         android:layout_width="match_parent"
+                         android:layout_height="wrap_content"
+                         android:gravity="center_horizontal"
+                         android:text="@string/fecha_vuelta" />
+
+                     <EditText
+                         android:id="@+id/fecha_regreso"
+                         android:layout_width="match_parent"
+                         android:layout_height="wrap_content"
+                         android:clickable="true"
+                         android:ems="10"
+                         android:focusable="false"
+                         android:gravity="center_horizontal"
+                         android:hint="@string/toque_aqui"
+                         android:inputType="date"
+                         android:maxLines="1" />
+                 </LinearLayout>
+             </LinearLayout>
+
+
+
+         -->
+
+
+
+    <!--    <EditText
+              android:id="@+id/texto_precio"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:background="#FCED9D"
+              android:ems="10"
+              android:hint="@string/cantidad_de_dinero"
+              android:inputType="textPersonName" /> -->
